@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+  <title>Ishrak Ahmed</title>
+  <style>
+    body {
+      text-align: center;
+      background: url("https://m.media-amazon.com/images/I/61IkrxQ9p8L.__AC_SX300_SY300_QL70_FMwebp_.jpg");
+      background-size: cover;
+      background-position: center;
+      color: orange;
+      font-family: 'Vina Sans', serif;
+    }
+    p {
+      font-size: 22px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+    input[type="submit"] {
+      background: red;
+      color: green;
+    }
+    img {
+      width: 300px;
+      border-radius: 50px;
+      }
+  </style>
+</head>
+<body>
+  <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4384b1a5-a684-47ea-807f-8411350433ec/flight-soccer-ball-lnBWww.png">
+  <p>Siuuu!</p>
+  <input type="email" placeholder="Your email">
+		<input type="email" placeholder="Your email">
+  <input type="submit">
+</body>
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+
+
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCSC5K-Yh4GFCimqAZkHnzwTS9wkP7SzAY",
+
+    authDomain: "siuuu-15be0.firebaseapp.com",
+
+    projectId: "siuuu-15be0",
+
+    storageBucket: "siuuu-15be0.appspot.com",
+
+    messagingSenderId: "657762648045",
+
+    appId: "1:657762648045:web:b24f63ba984fd7c7e771e4",
+
+    measurementId: "G-H8L96D7KSZ"
+
+  };
+
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+		import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+		const db = getDatabase(app);
+function Submit() {
+	  const timestamp = buildTimestamp()
+	  
+	  set(ref(db, timestamp), {
+		  Name: Name.value,
+	      email: Email.value,
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+	function buildTimestamp() {
+	  const now = new Date();
+	  let timestamp = now.getFullYear().toString() + "/";
+	  //const month = now.toLocaleString('default', { month: 'long' });
+
+	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+	  month = month.toString()
+	  month = addLeadingZero(month)
+	  timestamp += month + "/"; 
+
+	  let date = now.getDate().toString()
+	  date = addLeadingZero(date)
+	  timestamp += date + "/";
+
+	  let hours = now.getHours().toString()
+	  hours = addLeadingZero(hours)
+	  timestamp += hours + ":";
+
+	  let minutes = now.getMinutes().toString()
+	  minutes = addLeadingZero(minutes)
+	  timestamp += minutes + ":";
+
+	  let seconds = now.getSeconds().toString()
+	  seconds = addLeadingZero(seconds)
+	  timestamp += seconds;
+  
+	  return timestamp
+	}
+	
+	function addLeadingZero(units) {
+		if (units.length < 2) {
+			units = "0" + units
+		}
+		return units
+	}
+	
+
+
+
+</script>
+
+	
+

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&family=Vina+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Fira Sans', sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: url("https://st3.depositphotos.com/2793427/16335/i/1600/depositphotos_163350234-stock-photo-real-madrid-v-manchester-united.jpg");
+  background-size: cover;
+}
+div {
+  height: 500px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Vina Sans', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: Blue;
+  margin: 60px 0 0 0;
+}
+input {
+	font-size: 22px;
+}
+
+
+h2 {
+  font-family: 'londrina Shadow', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: blue;
+  margin: 0px 0 70px 0;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(100,0,0,1), rgba(100,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(100,0,0,1), rgba(100,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+  color: gold;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first {
+  background-image: url("https://st.depositphotos.com/1837549/2635/i/950/depositphotos_26356733-stock-photo-cristiano-ronaldo-of-real-madrid.jpg")
+}
+.second {
+  background-image: url("https://scale.coolshop-cdn.com/product-media.coolshop-cdn.com/AH3JY9/1b06ed4797f04f3d8dd19a038200ab74.png/f/soccerstarz-real-madrid-cristiano-ronaldo-home-kit-2017-version.png");
+}
+.soccer {
+  background-image: url("https://m.media-amazon.com/images/I/91f5igPCtPL._AC_SL1500_.jpg");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+    color: gold;
+    
+    
+  }
+  small {
+    font-size: 16px;
+    
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Siuuuu</h1>
+<h2>CR7</h2>
+<div class="first">
+	<input type="number" min="0" class="quantities" style="width: 50px"> 
+  <p>CR7 Real Madrid Poster <span class="price">$14</span><br />
+  <small>Ronaldo in 2011, one of the earliest years of his Madrid career where he won the 2011 Copa Del Rey final.. </small></p>
+</div>
+
+<div class="second">
+	<input type="number" min="0" class="quantities" style="width: 50px"> 
+  <p>CR7 figurine <span class="price">$22</span><br />
+  <small>This is a figurine from SoccerStarz, a company where they make all sorts of figurines related to Football/Soccer.</small></p>
+</div>
+  
+<div class="soccer">
+	<input type="number" min="0" class="quantities"style="width: 50px"> 
+  <p>CR7 + Messi Legacy Poster<span class="price">$8</span><br />
+  <small> This is the Legacy poster of Both Ronaldo's and Messi's careers in which Messi would retire at Inter Miami and Ronaldo will retire after the 2026 FIFA World Cup.</small></p>
+</div>
+<br><br><br><br>
+<input id="Name" placeholder="Name">
+<input id="Email" placeholder="Email">
+<input type="submit" id= "submit">
+<br><br><br><br>
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+		import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCaBS1MDwj-e_G_2BOtuBfNacOMZAXJwJ0",
+    authDomain: "y54t-6a7ef.firebaseapp.com",
+    projectId: "y54t-6a7ef",
+    storageBucket: "y54t-6a7ef.appspot.com",
+    messagingSenderId: "748693024253",
+    appId: "1:748693024253:web:81bba61a6be1af1d047d94"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+		const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  document.querySelector('#submit').addEventListener('click', Submit)
+		const quantities = document.querySelectorAll(".quantities")
+		const prices = document.querySelectorAll(".price")
+  const itemsList = ["CR7 Real Madrid Poster", "CR7 figurine", "CR7 + Messi Legacy Poster"]
+		
+		function Submit() {
+		  const timestamp = buildTimestamp()
+			let total = 0
+	  let cart = { }
+	  for  (let i=0; i<quantities.length; i=i+1) {
+	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+			  let price = prices[i].innerHTML.replace('$', '')
+			  total = total + quantities[i].value * price 
+	  	}
+	  	quantities[i].value = ""
+	  }
+			
+	  
+		  set(ref(db, timestamp), {
+			  Name: Name.value,
+		   email: Email.value,
+					cart: cart,
+     totalPrice: total,
+		   paid: "not yet",
+		  });
+
+		  Name.value = ""
+		  Email.value = ""
+		}
+		function buildTimestamp() {
+		  const now = new Date();
+		  let timestamp = now.getFullYear().toString() + "/";
+		  //const month = now.toLocaleString('default', { month: 'long' });
+
+		  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+		  month = month.toString()
+		  month = addLeadingZero(month)
+		  timestamp += month + "/"; 
+
+		  let date = now.getDate().toString()
+		  date = addLeadingZero(date)
+		  timestamp += date + "/";
+
+		  let hours = now.getHours().toString()
+		  hours = addLeadingZero(hours)
+		  timestamp += hours + ":";
+
+		  let minutes = now.getMinutes().toString()
+		  minutes = addLeadingZero(minutes)
+		  timestamp += minutes + ":";
+
+		  let seconds = now.getSeconds().toString()
+		  seconds = addLeadingZero(seconds)
+		  timestamp += seconds;
+  
+		  return timestamp
+		}
+	
+		function addLeadingZero(units) {
+			if (units.length < 2) {
+				units = "0" + units
+			}
+			return units
+		}
+</script>
+</body>
